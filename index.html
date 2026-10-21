@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101114">
+<title>Iron Ledger</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#101114;--panel:#1b1d23;--line:#30323b;--text:#f5f5f7;--muted:#a4a7b3;--accent:#c5ff45;--red:#ff6969}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{padding:25px 18px 18px;background:#15161b;border-bottom:1px solid var(--line)}
+h1{margin:0;font-size:27px;letter-spacing:-1px}
+h1 span{color:var(--accent)}
+header p{color:var(--muted);margin:7px 0 0;font-size:13px}
+main{max-width:750px;margin:auto;padding:16px;padding-bottom:90px}
+nav{display:flex;gap:8px;overflow:auto;margin-bottom:20px}
+nav button{white-space:nowrap;background:var(--panel);color:var(--muted);border:1px solid var(--line);border-radius:12px;padding:11px 14px}
+nav button.active{background:var(--accent);color:#101114;border-color:var(--accent);font-weight:700}
+button{cursor:pointer;font:inherit}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:16px;margin-bottom:14px}
+h2{font-size:19px;margin:0 0 14px}
+h3{font-size:16px;margin:0 0 8px}
+.muted{color:var(--muted);font-size:13px}
+label{display:block;font-size:13px;color:var(--muted);margin:10px 0 6px}
+input,select{width:100%;padding:12px;background:#111216;color:var(--text);border:1px solid var(--line);border-radius:10px;font:inherit}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{background:var(--accent);color:#101114;border:0;border-radius:11px;padding:12px 15px;font-weight:700}
+.btn.secondary{background:#292b32;color:var(--text);border:1px solid var(--line)}
+.btn.danger{background:#382124;color:#ff9999}
+.full{width:100%;margin-top:12px}
+.session,.exercise{border:1px solid var(--line);border-radius:13px;padding:14px;margin:10px 0;background:#17181e}
+.session{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.session strong{display:block;margin-bottom:5px}
+.session button{margin:3px 0}
+.exercise-top{display:flex;align-items:center;gap:12px}
+.machine{width:65px;height:65px;object-fit:cover;border-radius:12px;background:#282a30}
+.exercise-top>div{flex:1;min-width:0}
+.set-row{display:grid;grid-template-columns:32px 1fr 1fr;gap:8px;align-items:center;margin-top:9px}
+.set-row input{padding:10px}
+.set-row span{color:var(--muted);font-size:13px}
+.set-header{display:grid;grid-template-columns:32px 1fr 1fr;gap:8px;margin-top:12px;color:var(--muted);font-size:12px}
+.exercise-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.exercise-actions button{flex:1}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:#111216;border-radius:12px;padding:13px}
+.stat strong{display:block;font-size:22px;color:var(--accent);margin-top:5px}
+.hidden{display:none!important}
+.empty{text-align:center;color:var(--muted);padding:22px 8px}
+.small{font-size:12px}
+hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+@media(max-width:380px){main{padding:10px}.card{padding:12px}.row{gap:7px}.btn{padding:10px;font-size:13px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>IRON <span>LEDGER</span></h1>
+  <p>Enregistre. Progresse. Soulève plus.</p>
+</header>
+
+<main>
+<nav>
+  <button class="active" data-tab="sessions">Séances</button>
+  <button data-tab="workout">Entraînement</button>
+  <button data-tab="history">Historique</button>
+  <button data-tab="progress">Progression</button>
+</nav>
+
+<section id="sessions">
+  <div class="card">
+    <h2>Créer une séance</h2>
+    <label for="sessionName">Nom de la séance</label>
+    <input id="sessionName" placeholder="Ex. Pectoraux / Dos">
+    <button class="btn full" id="createSession">+ Créer ma séance</button>
+  </div>
+  <h2>Mes séances</h2>
+  <div id="sessionList"></div>
+</section>
+
+<section id="workout" class="hidden">
+  <div class="card">
+    <h2 id="workoutTitle">Ma séance</h2>
+    <p class="muted" id="workoutDate"></p>
+    <label for="exerciseName">Nom de l'exercice</label>
+    <input id="exerciseName" placeholder="Ex. Développé couché">
+    <label for="machineName">Machine ou matériel</label>
+    <input id="machineName" placeholder="Ex. Machine guidée, poulie...">
+    <label for="machineImage">Image de la machine (facultatif)</label>
+    <input id="machineImage" type="url" placeholder="Lien d'une image">
+    <div class="row">
+      <div>
+        <label for="initialWeight">Poids (kg)</label>
+        <input id="initialWeight" type="number" min="0" step="0.5" value="20">
+      </div>
+      <div>
+        <label for="initialReps">Répétitions par série</label>
+        <input id="initialReps" type="number" min="1" value="10">
+      </div>
+    </div>
+    <label for="initialSets">Nombre de séries</label>
+    <input id="initialSets" type="number" min="1" max="20" value="3">
+    <button class="btn full" id="addExercise">+ Ajouter l'exercice</button>
+  </div>
+  <div id="workoutExercises"></div>
+  <button class="btn full" id="finishWorkout">Terminer et enregistrer la séance</button>
+</section>
+
+<section id="history" class="hidden">
+  <h2>Historique des séances</h2>
+  <p class="muted">Appuie sur une séance pour retrouver les exercices, les charges et les répétitions enregistrées.</p>
+  <div id="historyList"></div>
+</section>
+
+<section id="progress" class="hidden">
+  <div class="card">
+    <h2>Évolution d'un exercice</h2>
+    <label for="progressExercise">Choisir un exercice</label>
+    <select id="progressExercise"></select>
+    <div class="stat-grid">
+      <div class="stat"><span class="muted">Dernière charge</span><strong id="lastWeight">—</strong></div>
+      <div class="stat"><span class="muted">Dernières répétitions</span><strong id="lastReps">—</strong></div>
+      <div class="stat"><span class="muted">Meilleure charge</span><strong id="bestWeight">—</strong></div>
+      <div class="stat"><span class="muted">Dernier volume</span><strong id="lastVolume">—</strong></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Progression de la charge</h2>
+    <canvas id="weightChart"></canvas>
+  </div>
+  <div class="card">
+    <h2>Progression des répétitions</h2>
+    <canvas id="repsChart"></canvas>
+  </div>
+  <div class="card">
+    <h2>Progression du volume</h2>
+    <p class="muted">Volume = poids × répétitions × séries.</p>
+    <canvas id="volumeChart"></canvas>
+  </div>
+</section>
+</main>
+
+<script>
+const KEY = "ironLedgerV1";
+let data = loadData();
+let activeSessionId = null;
+let chartWeight = null, chartReps = null, chartVolume = null;
+let openHistoryId = null;
+
+function loadData(){
+  try {
+    const d = JSON.parse(localStorage.getItem(KEY));
+    if(d && Array.isArray(d.sessions)) return d;
+  } catch(e){}
+  return {sessions:[]};
+}
+function save(){
+  localStorage.setItem(KEY, JSON.stringify(data));
+}
+function uid(){
+  return Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+}
+function esc(v){
+  return String(v ?? "").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+function dateText(d){
+  return new Date(d).toLocaleDateString("fr-FR",{
+    day:"2-digit",month:"2-digit",year:"numeric"
+  });
+}
+function getSession(id){
+  return data.sessions.find(s=>s.id===id);
+}
+function getExercise(id){
+  for(const s of data.sessions){
+    const e=s.exercises.find(x=>x.id===id);
+    if(e) return e;
+  }
+  return null;
+}
+function allExerciseNames(){
+  return [...new Set(data.sessions.flatMap(s=>s.exercises.map(e=>e.name)))].sort();
+}
+function safeImage(url){
+  try{
+    const u=new URL(url);
+    return ["https:","http:"].includes(u.protocol)?u.href:"";
+  }catch(e){return "";}
+}
+function machineImg(e){
+  const url=safeImage(e.image);
+  if(url) return `<img class="machine" src="${esc(url)}" alt="${esc(e.machine||e.name)}" onerror="this.style.display='none'">`;
+  return `<div class="machine" style="display:grid;place-items:center;font-size:30px">🏋️</div>`;
+}
+
+document.querySelectorAll("nav button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("active",x===b));
+    ["sessions","workout","history","progress"].forEach(id=>{
+      document.getElementById(id).classList.toggle("hidden",id!==b.dataset.tab);
+    });
+    if(b.dataset.tab==="progress") renderProgress();
+    if(b.dataset.tab==="history") renderHistory();
+  });
+});
+function goTab(id){
+  document.querySelector(`nav button[data-tab="${id}"]`).click();
+}
+document.getElementById("createSession").onclick=()=>{
+  const name=document.getElementById("sessionName").value.trim();
+  if(!name){alert("Donne un nom à ta séance.");return;}
+  const s={id:uid(),name,date:new Date().toISOString(),exercises:[]};
+  data.sessions.unshift(s);
+  activeSessionId=s.id;
+  save();
+  document.getElementById("sessionName").value="";
+  renderSessions();
+  openWorkout(s.id);
+};
+function renderSessions(){
+  const root=document.getElementById("sessionList");
+  if(!data.sessions.length){
+    root.innerHTML='<div class="card empty">Aucune séance pour le moment.<br>Crée ta première séance ci-dessus.</div>';
+    return;
+  }
+  root.innerHTML=data.sessions.map(s=>`
+    <div class="session">
+      <div><strong>${esc(s.name)}</strong><span class="muted">${dateText(s.date)} · ${s.exercises.length} exercice(s)</span></div>
+      <button class="btn" data-open="${s.id}">Ouvrir</button>
+    </div>`).join("");
+  root.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>openWorkout(b.dataset.open));
+}
+function openWorkout(id){
+  activeSessionId=id;
+  const s=getSession(id);
+  if(!s)return;
+  document.getElementById("workoutTitle").textContent=s.name;
+  document.getElementById("workoutDate").textContent="Séance du "+dateText(s.date);
+  document.getElementById("exerciseName").value="";
+  document.getElementById("machineName").value="";
+  document.getElementById("machineImage").value="";
+  renderWorkout();
+  goTab("workout");
+}
+document.getElementById("addExercise").onclick=()=>{
+  const s=getSession(activeSessionId);
+  if(!s){alert("Crée ou ouvre d'abord une séance.");return;}
+  const name=document.getElementById("exerciseName").value.trim();
+  const machine=document.getElementById("machineName").value.trim();
+  const weight=Number(document.getElementById("initialWeight").value);
+  const reps=Number(document.getElementById("initialReps").value);
+  const sets=Number(document.getElementById("initialSets").value);
+  if(!name){alert("Indique le nom de l'exercice.");return;}
+  if(!Number.isFinite(weight)||weight<0||!Number.isInteger(reps)||reps<1||!Number.isInteger(sets)||sets<1||sets>20){
+    alert("Vérifie le poids, les répétitions et le nombre de séries.");return;
+  }
+  s.exercises.push({
+    id:uid(),name,machine,
+    image:safeImage(document.getElementById("machineImage").value),
+    sets:Array.from({length:sets},()=>({weight,reps}))
+  });
+  save();
+  document.getElementById("exerciseName").value="";
+  renderWorkout();
+};
+function renderWorkout(){
+  const s=getSession(activeSessionId);
+  const root=document.getElementById("workoutExercises");
+  if(!s){root.innerHTML="";return;}
+  if(!s.exercises.length){
+    root.innerHTML='<div class="card empty">Ajoute les exercices réellement effectués pendant cette séance.</div>';
+    return;
+  }
+  root.innerHTML=s.exercises.map(e=>`
+    <div class="card">
+      <div class="exercise-top">
+        ${machineImg(e)}
+        <div><h3>${esc(e.name)}</h3><div class="muted">${esc(e.machine||"Matériel non précisé")}</div></div>
+      </div>
+      <div class="set-header"><span>Série</span><span>Poids (kg)</span><span>Répétitions</span></div>
+      ${e.sets.map((set,i)=>`
+        <div class="set-row">
+          <span>${i+1}</span>
+          <input aria-label="Poids série ${i+1}" type="number" min="0" step="0.5" value="${set.weight}" data-ex="${e.id}" data-set="${i}" data-field="weight">
+          <input aria-label="Répétitions série ${i+1}" type="number" min="1" step="1" value="${set.reps}" data-ex="${e.id}" data-set="${i}" data-field="reps">
+        </div>`).join("")}
+      <div class="exercise-actions">
+        <button class="btn secondary" data-addset="${e.id}">+ Série</button>
+        <button class="btn secondary" data-remove="${e.id}">Supprimer</button>
+      </div>
+    </div>`).join("");
+  root.querySelectorAll("input[data-ex]").forEach(input=>{
+    input.onchange=()=>{
+      const e=getExercise(input.dataset.ex);
+      if(!e)return;
+      const set=e.sets[Number(input.dataset.set)];
+      const field=input.dataset.field;
+      const val=Number(input.value);
+      if(!Number.isFinite(val)||val<0||(field==="reps"&&(!Number.isInteger(val)||val<1))){
+        alert("Valeur incorrecte.");renderWorkout();return;
+      }
+      set[field]=val;
+      save();
+      renderProgress();
+    };
+  });
+  root.querySelectorAll("[data-addset]").forEach(b=>b.onclick=()=>{
+    const e=getExercise(b.dataset.addset);
+    if(!e)return;
+    const last=e.sets[e.sets.length-1]||{weight:0,reps:10};
+    e.sets.push({...last});
+    save();renderWorkout();
+  });
+  root.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{
+    if(!confirm("Supprimer cet exercice de cette séance ?"))return;
+    const s=getSession(activeSessionId);
+    s.exercises=s.exercises.filter(e=>e.id!==b.dataset.remove);
+    save();renderWorkout();
+  });
+}
+document.getElementById("finishWorkout").onclick=()=>{
+  const s=getSession(activeSessionId);
+  if(!s)return;
+  s.date=new Date().toISOString();
+  save();
+  renderSessions();
+  renderHistory();
+  alert("Séance enregistrée !");
+  goTab("history");
+};
+function renderHistory(){
+  const root=document.getElementById("historyList");
+  const sessions=[...data.sessions].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(!sessions.length){root.innerHTML='<div class="card empty">Ton historique apparaîtra ici.</div>';return;}
+  root.innerHTML=sessions.map(s=>`
+    <div class="card">
+      <div class="session" style="border:0;padding:0">
+        <div><strong>${esc(s.name)}</strong><span class="muted">${dateText(s.date)} · ${s.exercises.length} exercice(s)</span></div>
+        <button class="btn secondary" data-history="${s.id}">${openHistoryId===s.id?"Masquer":"Détails"}</button>
+      </div>
+      ${openHistoryId===s.id?`
+        <hr>
+        ${s.exercises.length?s.exercises.map(e=>`
+          <div class="exercise">
+            <div class="exercise-top">${machineImg(e)}<div><h3>${esc(e.name)}</h3><div class="muted">${esc(e.machine||"Matériel non précisé")}</div></div></div>
+            ${e.sets.map((x,i)=>`<p>Série ${i+1} : <b>${x.weight} kg × ${x.reps} répétitions</b></p>`).join("")}
+            <button class="btn secondary full" data-edit="${s.id}">Ouvrir cette séance</button>
+          </div>`).join(""):'<p class="muted">Aucun exercice enregistré.</p>'}
+      `:""}
+    </div>`).join("");
+  root.querySelectorAll("[data-history]").forEach(b=>b.onclick=()=>{
+    openHistoryId=openHistoryId===b.dataset.history?null:b.dataset.history;
+    renderHistory();
+  });
+  root.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>openWorkout(b.dataset.edit));
+}
+function getExerciseHistory(name){
+  return data.sessions
+    .filter(s=>s.exercises.some(e=>e.name===name))
+    .sort((a,b)=>new Date(a.date)-new Date(b.date))
+    .map(s=>{
+      const e=s.exercises.find(x=>x.name===name);
+      const bestSet=e.sets.reduce((best,x)=>x.weight>best.weight?x:best,e.sets[0]||{weight:0,reps:0});
+      return {date:dateText(s.date),weight:bestSet.weight,reps:bestSet.reps,
+        volume:e.sets.reduce((sum,x)=>sum+x.weight*x.reps,0),sets:e.sets.length};
+    });
+}
+function renderProgress(){
+  const names=allExerciseNames();
+  const select=document.getElementById("progressExercise");
+  const previous=select.value;
+  select.innerHTML=names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join("");
+  if(names.includes(previous))select.value=previous;
+  if(!names.length){
+    ["lastWeight","lastReps","bestWeight","lastVolume"].forEach(id=>document.getElementById(id).textContent="—");
+    drawChart("weightChart",null,[],[], "Charge (kg)");
+    drawChart("repsChart",null,[],[], "Répétitions");
+    drawChart("volumeChart",null,[],[], "Volume");
+    return;
+  }
+  updateProgress();
+}
+function drawChart(canvasId,existing,labels,values,label){
+  const canvas=document.getElementById(canvasId);
+  if(existing)existing.destroy();
+  if(typeof Chart==="undefined")return null;
+  return new Chart(canvas,{
+    type:"line",
+    data:{labels,datasets:[{label,data:values,borderColor:"#c5ff45",backgroundColor:"rgba(197,255,69,.12)",tension:.25,fill:true,pointRadius:4}]},
+    options:{responsive:true,scales:{y:{beginAtZero:true,ticks:{color:"#b4b6c0"},grid:{color:"#30323b"}},x:{ticks:{color:"#b4b6c0"},grid:{color:"#30323b"}}},plugins:{legend:{labels:{color:"#f5f5f7"}}}}
+  });
+}
+function updateProgress(){
+  const name=document.getElementById("progressExercise").value;
+  if(!name)return;
+  const hist=getExerciseHistory(name);
+  if(!hist.length)return;
+  const last=hist[hist.length-1];
+  document.getElementById("lastWeight").textContent=last.weight+" kg";
+  document.getElementById("lastReps").textContent=last.reps;
+  document.getElementById("bestWeight").textContent=Math.max(...hist.map(x=>x.weight))+" kg";
+  document.getElementById("lastVolume").textContent=last.volume+" kg";
+  chartWeight=drawChart("weightChart",chartWeight,hist.map(x=>x.date),hist.map(x=>x.weight),"Charge maximale (kg)");
+  chartReps=drawChart("repsChart",chartReps,hist.map(x=>x.date),hist.map(x=>x.reps),"Répétitions de la meilleure série");
+  chartVolume=drawChart("volumeChart",chartVolume,hist.map(x=>x.date),hist.map(x=>x.volume),"Volume total (kg)");
+}
+document.getElementById("progressExercise").onchange=updateProgress;
+
+renderSessions();
+renderHistory();
+renderProgress();
+</script>
+</body>
+</html>
