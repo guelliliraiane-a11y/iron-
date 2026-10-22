@@ -3,241 +3,150 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#111111">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090a0b">
 <title>SUB 60 IMPOSSIBLE YASSINE</title>
 <style>
-:root {
-  --red: #ed1027;
-  --bg: #090a0b;
-  --panel: #121416;
-  --muted: #a9afb5;
-  --white: #f7f7f7;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--white);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-}
-button, input { font: inherit; }
-button { cursor: pointer; }
-[hidden] { display: none !important; }
-
-.hero {
-  min-height: 175px;
-  padding: 26px 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: radial-gradient(ellipse at 75% 40%, #501018, #151112 45%, #080808 80%);
-  border-bottom: 3px solid #292929;
-}
-.logo-mark { font-size: 43px; color: var(--red); font-weight: 1000; }
-.brand h1 {
-  margin: 0;
-  font-size: clamp(27px, 6vw, 45px);
-  font-weight: 1000;
-  letter-spacing: -1.5px;
-  line-height: .98;
-  font-style: italic;
-}
-.brand h1 span { display: block; color: var(--red); margin-top: 6px; }
-.yassine {
-  display: inline-block;
-  background: var(--red);
-  padding: 5px 15px;
-  margin-top: 9px;
-  font-weight: 900;
-  letter-spacing: 4px;
-  transform: skew(-8deg);
-}
-.tag { color: #bfc2c5; letter-spacing: 3px; font-size: 10px; margin-top: 13px; }
-.hero-note {
-  margin-left: auto;
-  text-align: right;
-  color: #eee;
-  font-size: 12px;
-  font-weight: 900;
-  font-style: italic;
-  line-height: 1.6;
-}
-.hero-note span { color: var(--red); }
-
-main { max-width: 1200px; margin: auto; padding: 16px; }
-.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
-.tab {
-  background: #171819;
-  color: #eee;
-  border: 1px solid #303234;
-  border-radius: 13px;
-  padding: 15px 8px;
-  font-weight: 800;
-}
-.tab.active { background: var(--red); border-color: var(--red); }
-.layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 16px; }
-.panel {
-  min-width: 0;
-  border: 1px solid #2d3033;
-  border-radius: 18px;
-  padding: 15px;
-  background: linear-gradient(145deg, #101112, #0b0c0d);
-}
-.search-wrap { position: relative; margin-bottom: 18px; }
-.search-wrap input {
-  width: 100%;
-  background: #17191b;
-  border: 1px solid #4b4f52;
-  border-radius: 11px;
-  color: white;
-  padding: 13px;
-  outline: none;
-}
-.search-wrap input:focus, .field input:focus { border-color: var(--red); }
-.section-title { font-weight: 900; margin: 16px 0 12px; }
-.exercise-list, .saved-list { display: flex; flex-direction: column; gap: 9px; }
-.exercise {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  text-align: left;
-  background: #17191b;
-  border: 1px solid #292d30;
-  border-radius: 13px;
-  padding: 9px;
-  color: white;
-  width: 100%;
-}
-.exercise:hover, .exercise.selected { border-color: var(--red); background: #241417; }
-.exercise img { width: 66px; height: 66px; object-fit: cover; border-radius: 10px; background: #252525; }
-.ex-copy { flex: 1; min-width: 0; }
-.exercise strong, .saved-item strong { display: block; font-size: 13px; }
-.exercise small, .saved-item small { display: block; color: var(--muted); margin-top: 5px; font-size: 11px; }
-.chevron { font-size: 22px; color: #bbb; }
-.detail-top { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
-.detail-top img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 13px; background: #252525; }
-.detail-top h2 { margin: 3px 0 7px; font-size: 23px; line-height: 1.1; }
-.subtitle, .muscle-note { color: #bfc4c8; font-size: 13px; line-height: 1.5; }
-.muscle-note { margin-top: 10px; }
-.tag-red { display: block; color: #ff3042; font-size: 11px; font-weight: 900; margin-top: 10px; }
-.sets-box { border: 1px solid #292d30; border-radius: 13px; padding: 11px; margin-top: 16px; }
-.sets-head { color: #ff3042; font-weight: 900; font-size: 13px; margin-bottom: 12px; }
-.sets-head small { display: block; color: #aeb3b7; font-weight: 400; font-size: 10px; margin-top: 4px; }
-.set-row {
-  display: grid;
-  grid-template-columns: 55px minmax(0, 1fr) 23px;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-.set-label { font-size: 12px; font-weight: 800; }
-.set-values { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-.field label { display: block; color: #b8bdc2; font-size: 10px; margin-bottom: 5px; }
-.field input {
-  width: 100%;
-  min-width: 0;
-  background: #101112;
-  color: white;
-  border: 1px solid #363a3e;
-  border-radius: 9px;
-  padding: 10px 4px;
-  text-align: center;
-  outline: none;
-}
-.remove-set { border: 0; background: transparent; color: #bbb; font-size: 20px; padding: 2px; }
-.remove-set:hover { color: #ff3042; }
-.btn {
-  border: 1px solid #414548;
-  background: #17191b;
-  color: #eee;
-  border-radius: 10px;
-  padding: 12px;
-  font-weight: 800;
-}
-.btn.secondary { width: 100%; }
-.btn.primary { background: var(--red); border-color: var(--red); color: white; }
-.save-btn { width: 100%; margin-top: 13px; padding: 14px; }
-.empty { color: #aab0b5; text-align: center; padding: 22px 10px; border: 1px dashed #3a3d40; border-radius: 12px; font-size: 13px; }
-.saved-item { background: #17191b; border: 1px solid #2b2e31; border-radius: 12px; padding: 11px; display: flex; gap: 10px; align-items: center; }
-.saved-item img { width: 58px; height: 58px; object-fit: cover; border-radius: 9px; background: #222; }
-.saved-copy { flex: 1; min-width: 0; }
-.saved-item .btn { padding: 9px; }
-.status { text-align: center; color: #b6bbc0; font-size: 10px; margin-top: 13px; }
-.status i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #28b46a; margin-right: 5px; }
-.footer {
-  border-top: 1px solid #27292b;
-  margin-top: 26px;
-  padding: 22px 8px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  text-align: center;
-}
-.footer-item { padding: 0 7px; border-right: 1px solid #3b3d3f; }
-.footer-item:last-child { border: 0; }
-.footer-icon { font-size: 25px; color: var(--red); font-weight: 1000; }
-.footer strong { display: block; font-size: 11px; margin-top: 7px; }
-.footer small { display: block; color: #b2b6ba; letter-spacing: 1px; font-size: 9px; margin-top: 4px; }
-.toast {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1d3427;
-  border: 1px solid #2d7e4b;
-  color: #d9ffe6;
-  border-radius: 12px;
-  padding: 12px 17px;
-  z-index: 5;
-  display: none;
-  max-width: 90%;
-}
-@media(max-width:760px) {
-  .hero { min-height: 150px; padding: 22px 13px; gap: 9px; }
-  .logo-mark { font-size: 31px; }
-  .brand h1 { font-size: clamp(25px, 7vw, 35px); }
-  .brand .tag { letter-spacing: 2px; font-size: 9px; }
-  .brand .yassine { letter-spacing: 3px; }
-  .hero-note { font-size: 10px; }
-  main { padding: 11px; }
-  .tabs { gap: 8px; }
-  .tab { font-size: 12px; padding: 13px 5px; }
-  .layout { grid-template-columns: 1fr; }
-  .panel { padding: 12px; }
-  .detail-top { grid-template-columns: minmax(105px, .85fr) 1fr; gap: 11px; }
-  .detail-top h2 { font-size: 20px; }
-  .muscle-note { font-size: 12px; }
-}
-@media(max-width:380px) {
-  .hero-note { display: none; }
-  .exercise img { width: 58px; height: 58px; }
-}
+:root{--red:#ed1027;--bg:#090a0b;--panel:#121416;--card:#191c1f;--line:#303438;--muted:#a9afb5;--white:#f7f7f7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{padding:28px 20px;background:radial-gradient(ellipse at 75% 50%,#4b1017,#0b0b0c 65%);border-bottom:3px solid #292929;display:flex;align-items:center;gap:16px}
+.logo{font-size:42px;color:var(--red);font-weight:1000}
+h1{font-size:clamp(25px,5vw,42px);font-style:italic;line-height:.95;margin:0;font-weight:1000}
+h1 span{display:block;color:var(--red);margin-top:7px}
+.yassine{display:inline-block;background:var(--red);padding:5px 13px;margin-top:10px;letter-spacing:4px;font-weight:900}
+.tagline{font-size:10px;color:#bbb;letter-spacing:3px;margin-top:12px}
+main{max-width:1200px;margin:auto;padding:14px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px}
+.tab,.btn{border:1px solid #383b3e;border-radius:12px;padding:13px;background:#191b1d;color:#fff;font-weight:800}
+.tab.active,.btn.primary{background:var(--red);border-color:var(--red)}
+.layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:14px}
+.panel{background:linear-gradient(145deg,#121416,#0b0c0d);border:1px solid #2d3033;border-radius:16px;padding:14px;min-width:0}
+input,select{background:#101112;color:white;border:1px solid #3c4044;border-radius:10px;padding:12px;width:100%;min-width:0}
+.search{margin-bottom:10px}
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.status-text{font-size:12px;color:#bbb;margin:10px 0 15px;line-height:1.5}
+.section-title{font-weight:900;margin:12px 0;color:var(--red)}
+.exercise-list{display:flex;flex-direction:column;gap:8px}
+.exercise{display:flex;align-items:center;gap:10px;text-align:left;width:100%;background:#191c1f;color:white;border:1px solid #303438;border-radius:12px;padding:9px}
+.exercise.selected{border-color:var(--red);background:#291418}
+.exercise img{width:68px;height:68px;object-fit:cover;background:#252525;border-radius:9px;flex-shrink:0}
+.ex-copy{flex:1;min-width:0}
+.ex-copy strong{display:block;font-size:14px;line-height:1.3}
+.ex-copy small{display:block;color:#b5bbc0;font-size:11px;margin-top:5px}
+.detail-top{display:grid;grid-template-columns:minmax(100px,.85fr) 1fr;gap:12px;align-items:start}
+.detail-top img{width:100%;aspect-ratio:1;object-fit:cover;background:#252525;border-radius:12px}
+h2{font-size:22px;margin:3px 0 8px}
+.muted{font-size:12px;color:#bdc1c5;line-height:1.5}
+.pill{display:inline-block;color:#ff5264;font-size:11px;font-weight:800;margin-top:9px}
+.box{border:1px solid #303438;border-radius:12px;padding:12px;margin-top:14px}
+.box-title{color:#ff5264;font-weight:900;font-size:13px;margin-bottom:12px}
+.set-row{display:grid;grid-template-columns:48px 1fr 30px;gap:7px;align-items:center;margin-bottom:8px}
+.set-num{font-size:12px;font-weight:800}
+.values{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.field label{font-size:10px;color:#bbb;display:block;margin:0 0 4px}
+.field input{text-align:center;padding:10px 4px}
+.remove{background:transparent;border:0;color:#ff5264;font-size:21px}
+.btn{margin-top:10px}
+.btn.full{width:100%}
+.btn.secondary{width:100%;background:#191b1d}
+.save{width:100%;margin-top:13px;padding:15px}
+.saved-list{display:flex;flex-direction:column;gap:9px}
+.saved-item{display:flex;align-items:center;gap:10px;background:#191c1f;border:1px solid #303438;border-radius:12px;padding:10px}
+.saved-item img{width:58px;height:58px;object-fit:cover;border-radius:8px}
+.saved-copy{flex:1;min-width:0}
+.saved-copy strong{display:block;font-size:13px}
+.saved-copy small{display:block;color:#bbb;font-size:11px;margin-top:5px;line-height:1.4}
+.saved-item button{padding:9px;font-size:12px}
+.empty{color:#aaa;text-align:center;padding:22px 8px;font-size:13px}
+.toast{display:none;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#193425;border:1px solid #29824a;color:#fff;padding:13px 17px;border-radius:12px;z-index:5;max-width:90%;text-align:center}
+footer{text-align:center;color:#777;font-size:10px;letter-spacing:2px;padding:22px}
+[hidden]{display:none!important}
+.add-form{border:1px solid #45494e;background:#151719;padding:12px;border-radius:12px;margin:10px 0 14px}
+.add-form label{display:block;color:#c5c9cd;font-size:12px;margin:10px 0 5px}
+.add-form input,.add-form select{margin-bottom:3px}
+.add-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.add-actions .btn{margin-top:0}
+@media(max-width:760px){header{padding:22px 14px}.logo{font-size:32px}main{padding:10px}.layout{grid-template-columns:1fr}.panel{padding:12px}.exercise img{width:60px;height:60px}.detail-top{grid-template-columns:110px 1fr}h2{font-size:20px}}
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="logo-mark" aria-hidden="true">▰</div>
-  <div class="brand">
+<header>
+  <div class="logo">▰</div>
+  <div>
     <h1>SUB 60 <span>IMPOSSIBLE</span></h1>
     <div class="yassine">YASSINE</div>
-    <div class="tag">STRENGTH TRACKER</div>
+    <div class="tagline">STRENGTH TRACKER</div>
   </div>
-  <div class="hero-note"><span>DISCIPLINE</span><br>AUJOURD'HUI<br>RÉSULTATS<br>DEMAIN</div>
 </header>
 
 <main>
   <nav class="tabs">
-    <button class="tab active" id="tabExercises" type="button">✣ &nbsp; Exercices</button>
-    <button class="tab" id="tabSaved" type="button">🏋 &nbsp; Mes charges</button>
+    <button class="tab active" id="tabExercises" type="button">🏋 Exercices</button>
+    <button class="tab" id="tabSaved" type="button">▣ Mes charges</button>
   </nav>
 
   <div class="layout">
     <section class="panel" id="catalogPanel">
-      <div class="search-wrap">
-        <input id="search" type="search" placeholder="Rechercher un exercice..." autocomplete="off">
+      <input class="search" id="search" type="search" placeholder="Rechercher en français ou en anglais…" autocomplete="off">
+      <div class="filters">
+        <select id="muscleFilter"><option value="">Tous les muscles</option></select>
+        <select id="equipmentFilter"><option value="">Tous les équipements</option></select>
       </div>
-      <div class="section-title">♨ Exercices populaires</div>
+      <div class="status-text" id="databaseStatus">Chargement de la bibliothèque…</div>
+      <div class="section-title">♨ BIBLIOTHÈQUE D'EXERCICES</div>
+
+      <button class="btn primary full" id="showAddExercise" type="button">＋ AJOUTER MON EXERCICE</button>
+
+      <form class="add-form" id="addExerciseForm" hidden>
+        <div class="box-title">＋ CRÉER UN EXERCICE PERSONNALISÉ</div>
+        <label for="customName">Nom de l'exercice *</label>
+        <input id="customName" required maxlength="80" placeholder="Ex. : Tirage à la machine spéciale">
+
+        <label for="customEnglish">Nom anglais (facultatif)</label>
+        <input id="customEnglish" maxlength="80" placeholder="Ex. : Custom Machine Row">
+
+        <label for="customMuscle">Muscle travaillé</label>
+        <select id="customMuscle">
+          <option>Autres</option>
+          <option>Pectoraux</option>
+          <option>Dos</option>
+          <option>Épaules</option>
+          <option>Biceps</option>
+          <option>Triceps</option>
+          <option>Quadriceps</option>
+          <option>Ischio-jambiers</option>
+          <option>Fessiers</option>
+          <option>Mollets</option>
+          <option>Abdominaux</option>
+          <option>Avant-bras</option>
+          <option>Corps entier</option>
+        </select>
+
+        <label for="customEquipment">Équipement</label>
+        <select id="customEquipment">
+          <option>Machine</option>
+          <option>Poulie</option>
+          <option>Haltères</option>
+          <option>Barre</option>
+          <option>Poids du corps</option>
+          <option>Élastiques</option>
+          <option>Kettlebell</option>
+          <option>Autre</option>
+        </select>
+
+        <label for="customImage">Lien de l'image (facultatif)</label>
+        <input id="customImage" type="url" placeholder="https://...">
+
+        <div class="add-actions">
+          <button class="btn primary" type="submit">Créer l'exercice</button>
+          <button class="btn secondary" id="cancelAddExercise" type="button">Annuler</button>
+        </div>
+        <div class="status-text">Ton exercice sera conservé dans ce navigateur et pourra être utilisé comme les autres.</div>
+      </form>
+
       <div class="exercise-list" id="exerciseList"></div>
     </section>
 
@@ -246,214 +155,294 @@ main { max-width: 1200px; margin: auto; padding: 16px; }
     </section>
 
     <section class="panel" id="savedPanel" hidden>
-      <div class="section-title">◉ Mes dernières charges</div>
+      <div class="section-title">▣ MES DERNIÈRES CHARGES</div>
       <div class="saved-list" id="savedList"></div>
     </section>
   </div>
-
-  <footer class="footer">
-    <div class="footer-item"><div class="footer-icon">◎</div><strong>PLUS FORT</strong><small>QUE HIER</small></div>
-    <div class="footer-item"><div class="footer-icon">▥</div><strong>JOUR APRÈS JOUR</strong><small>TU PROGRESSES</small></div>
-    <div class="footer-item"><div class="footer-icon">♛</div><strong>SUB 60 IMPOSSIBLE</strong><small>YASSINE</small></div>
-  </footer>
 </main>
+
+<footer>DISCIPLINE AUJOURD'HUI · RÉSULTATS DEMAIN</footer>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
 "use strict";
 
-const STORAGE_KEY = "sub60ImpossibleYassineV1";
+const STORAGE_KEY = "sub60YassineChargesV2";
+const SELECTED_KEY = "sub60YassineSelectedV2";
+const CUSTOM_KEY = "sub60YassineCustomExercisesV1";
+const DB_URL = "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json";
+const IMG_BASE = "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/";
 
-const exercises = [
-  {id:"leg-press",name:"Presse à cuisses",machine:"Leg Press",muscles:"Jambes",description:"Travaille principalement les quadriceps, les fessiers et les ischio-jambiers.",search:"presse cuisses leg press jambes",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Lever%20Leg%20Press/0.jpg"},
-  {id:"bench-press",name:"Développé couché",machine:"Banc + barre",muscles:"Pectoraux",description:"Cible les pectoraux, avec l'aide des triceps et des épaules.",search:"bench press pecs poitrine barre",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell%20Bench%20Press%20-%20Medium%20Grip/0.jpg"},
-  {id:"lat-pulldown",name:"Tirage vertical",machine:"Lat Pulldown",muscles:"Dos",description:"Renforce le grand dorsal et le haut du dos.",search:"tirage vertical lat pulldown dos poulie",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leverage%20Lat%20Pulldown/0.jpg"},
-  {id:"butterfly",name:"Butterfly",machine:"Pec Deck",muscles:"Pectoraux",description:"Exercice d'isolation des pectoraux à la machine.",search:"butterfly pec deck pecs",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Butterfly/0.jpg"},
-  {id:"shoulder-press",name:"Développé militaire",machine:"Barre ou haltères",muscles:"Épaules",description:"Renforce les épaules et sollicite les triceps.",search:"développé militaire shoulder press épaules",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell%20Shoulder%20Press/0.jpg"},
-  {id:"seated-row",name:"Rowing assis",machine:"Poulie basse",muscles:"Dos",description:"Travaille le milieu du dos et rapproche les omoplates.",search:"rowing assis seated cable row dos",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated%20Cable%20Rows/0.jpg"},
-  {id:"squat",name:"Squat",machine:"Rack + barre",muscles:"Jambes",description:"Mouvement complet ciblant les quadriceps et les fessiers.",search:"squat jambes barre rack",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell%20Full%20Squat/0.jpg"},
-  {id:"biceps-curl",name:"Curl biceps",machine:"Barre ou haltères",muscles:"Biceps",description:"Travaille les biceps avec une flexion contrôlée des coudes.",search:"curl biceps dumbbell haltères",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell%20Bicep%20Curl/0.jpg"},
-  {id:"incline-press",name:"Développé incliné",machine:"Banc incliné + haltères",muscles:"Haut des pectoraux",description:"Met l'accent sur la partie supérieure des pectoraux.",search:"développé incliné incline dumbbell press",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline%20Dumbbell%20Press/0.jpg"},
-  {id:"chest-press",name:"Chest Press",machine:"Presse poitrine",muscles:"Pectoraux",description:"Presse guidée pour travailler les pectoraux et les triceps.",search:"chest press machine pecs",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Chest%20Press/0.jpg"},
-  {id:"assisted-dips",name:"Dips assistés",machine:"Machine à dips",muscles:"Pectoraux et triceps",description:"La machine accompagne le mouvement pour travailler les pectoraux et les triceps.",search:"dips assistés triceps machine",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Assisted%20Dips/0.jpg"},
-  {id:"cable-fly",name:"Écartés à la poulie",machine:"Vis-à-vis",muscles:"Pectoraux",description:"Mouvement d'isolation des pectoraux à la poulie.",search:"cable fly écartés poulie vis à vis",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable%20Crossover/0.jpg"},
-  {id:"pullup",name:"Tractions",machine:"Barre de traction",muscles:"Dos et biceps",description:"Exercice au poids du corps pour renforcer le dos et les bras.",search:"tractions pull up dos",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/0.jpg"},
-  {id:"lateral-raise",name:"Élévations latérales",machine:"Haltères",muscles:"Épaules",description:"Isole principalement la partie latérale des épaules.",search:"élévations latérales lateral raise",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side%20Lateral%20Raise/0.jpg"},
-  {id:"triceps-pushdown",name:"Extension triceps",machine:"Poulie haute",muscles:"Triceps",description:"Extension des coudes à la poulie pour cibler les triceps.",search:"extension triceps pushdown poulie",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Triceps%20Pushdown/0.jpg"},
-  {id:"leg-extension",name:"Leg Extension",machine:"Machine à extension",muscles:"Quadriceps",description:"Isolation des quadriceps en extension de genou.",search:"leg extension quadriceps jambes",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg%20Extensions/0.jpg"},
-  {id:"leg-curl",name:"Leg Curl",machine:"Machine à flexion",muscles:"Ischio-jambiers",description:"Travaille l'arrière des cuisses en flexion du genou.",search:"leg curl ischio jambiers",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Lying%20Leg%20Curls/0.jpg"},
-  {id:"lunges",name:"Fentes",machine:"Haltères ou poids du corps",muscles:"Jambes et fessiers",description:"Travail unilatéral des jambes et des fessiers.",search:"fentes lunges jambes",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell%20Lunges/0.jpg"},
-  {id:"hip-thrust",name:"Hip Thrust",machine:"Banc ou machine",muscles:"Fessiers",description:"Mouvement de poussée de hanches ciblant les fessiers.",search:"hip thrust fessiers",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell%20Hip%20Thrust/0.jpg"},
-  {id:"calf-raise",name:"Extensions mollets",machine:"Machine ou marche",muscles:"Mollets",description:"Renforce les mollets par une flexion plantaire contrôlée.",search:"mollets calf raise",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing%20Calf%20Raises/0.jpg"},
-  {id:"crunch",name:"Crunch",machine:"Tapis ou machine",muscles:"Abdominaux",description:"Travaille les abdominaux avec une flexion contrôlée du tronc.",search:"crunch abdos abdominal",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Crunches/0.jpg"},
-  {id:"plank",name:"Gainage",machine:"Tapis",muscles:"Sangle abdominale",description:"Renforce la stabilité du tronc en maintenant une position alignée.",search:"gainage plank planche abdos",image:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Plank/0.jpg"}
-];
+const fallbackImage = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180"><rect width="240" height="180" fill="#202326"/><text x="120" y="83" fill="#ed1027" font-size="23" font-weight="bold" text-anchor="middle" font-family="Arial">SUB 60</text><text x="120" y="112" fill="#dddddd" font-size="12" text-anchor="middle" font-family="Arial">EXERCICE</text></svg>'
+);
 
-const $ = id => document.getElementById(id);
-let saved = loadSaved();
-let selectedId = exercises[0].id;
+const starter = [
+  ["leg-press","Presse à cuisses","Leg Press","Quadriceps","Machine","Lever Leg Press"],
+  ["chest-press","Développé à la machine","Machine Chest Press","Pectoraux","Machine","Chest Press"],
+  ["lat-pulldown","Tirage vertical","Lat Pulldown","Dos","Machine","Lat Pulldown"],
+  ["seated-row","Tirage horizontal","Seated Cable Row","Dos","Poulie","Seated Cable Row"],
+  ["butterfly","Pec deck / Butterfly","Butterfly","Pectoraux","Machine","Butterfly"],
+  ["shoulder-press","Développé épaules","Shoulder Press","Épaules","Machine","Shoulder Press"],
+  ["leg-extension","Extension des jambes","Leg Extension","Quadriceps","Machine","Leg Extension"],
+  ["leg-curl","Flexion des jambes","Leg Curl","Ischio-jambiers","Machine","Lying Leg Curl"],
+  ["cable-pushdown","Extension triceps à la poulie","Triceps Pushdown","Triceps","Poulie","Triceps Pushdown"],
+  ["biceps-curl","Curl biceps","Biceps Curl","Biceps","Haltères","Dumbbell Biceps Curl"],
+  ["lateral-raise","Élévations latérales","Lateral Raise","Épaules","Haltères","Side Lateral Raise"],
+  ["cable-fly","Écartés à la poulie","Cable Fly","Pectoraux","Poulie","Cable Crossover"],
+  ["bench-press","Développé couché","Barbell Bench Press","Pectoraux","Barre","Barbell Bench Press"],
+  ["incline-press","Développé incliné","Incline Dumbbell Press","Pectoraux","Haltères","Incline Dumbbell Press"],
+  ["squat","Squat","Barbell Squat","Quadriceps","Barre","Barbell Full Squat"],
+  ["deadlift","Soulevé de terre","Deadlift","Dos / jambes","Barre","Barbell Deadlift"],
+  ["hip-thrust","Hip thrust","Barbell Hip Thrust","Fessiers","Barre","Barbell Hip Thrust"],
+  ["calf-raise","Extensions mollets","Standing Calf Raise","Mollets","Machine","Standing Calf Raises"],
+  ["pullup","Tractions","Pull-Up","Dos","Poids du corps","Pull-Up"],
+  ["dip","Dips","Dips","Triceps / pectoraux","Poids du corps","Dips"],
+  ["pushup","Pompes","Push-Up","Pectoraux","Poids du corps","Push-Up"],
+  ["plank","Gainage planche","Plank","Abdominaux","Poids du corps","Plank"],
+  ["crunch","Crunch abdominal","Crunch","Abdominaux","Poids du corps","Crunch"],
+  ["lunge","Fentes","Lunge","Quadriceps / fessiers","Haltères","Dumbbell Lunge"],
+  ["seated-calf","Mollets assis","Seated Calf Raise","Mollets","Machine","Seated Calf Raise"],
+  ["adductor","Machine adducteurs","Hip Adduction","Adducteurs","Machine","Adductor"],
+  ["abductor","Machine abducteurs","Hip Abduction","Abducteurs","Machine","Abductor"],
+  ["assisted-dip","Dips assistés","Assisted Dip","Triceps / pectoraux","Machine","Assisted Dip"],
+  ["assisted-pullup","Tractions assistées","Assisted Pull-Up","Dos","Machine","Assisted Pull-Up"],
+  ["preacher-curl","Curl pupitre","Preacher Curl","Biceps","Machine","Preacher Curl"]
+].map(([id,name,englishName,muscles,machine,match]) => ({
+  id,name,englishName,muscles,machine,match,
+  description:"Effectue le mouvement avec contrôle et choisis une charge adaptée.",
+  image:fallbackImage
+}));
+
+let exercises = starter.slice();
+let saved = {};
+let selectedId = "";
 let currentSets = [];
 let activeTab = "exercises";
 
-function loadSaved() {
+const $ = id => document.getElementById(id);
+
+function normalize(value) {
+  return String(value || "").normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"").toLowerCase()
+    .replace(/[^a-z0-9]+/g," ").trim();
+}
+
+function safe(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+function loadSavedData() {
   try {
-    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    return data && typeof data === "object" ? data : {};
-  } catch (e) {
-    return {};
+    saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    if (!saved || typeof saved !== "object" || Array.isArray(saved)) saved = {};
+  } catch (e) { saved = {}; }
+
+  try { selectedId = localStorage.getItem(SELECTED_KEY) || ""; }
+  catch (e) { selectedId = ""; }
+}
+
+function loadCustomExercises() {
+  try {
+    const custom = JSON.parse(localStorage.getItem(CUSTOM_KEY) || "[]");
+    if (!Array.isArray(custom)) return;
+
+    custom.forEach(ex => {
+      if (!ex || !ex.id || !ex.name) return;
+      if (ex.id.startsWith("custom-") && !exercises.some(item => item.id === ex.id)) {
+        exercises.push(ex);
+      }
+    });
+  } catch (error) {
+    console.warn("Impossible de charger les exercices personnalisés",error);
   }
 }
 
-function safeText(value) {
-  return String(value ?? "").replace(/[&<>"']/g, ch => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
-  }[ch]));
+function getExercise(id) {
+  return exercises.find(ex => ex.id === id) || exercises[0];
 }
 
 function defaultSets() {
-  return [{weight:"",reps:""},{weight:"",reps:""},{weight:"",reps:""}];
+  return [
+    {weight:"",reps:""},
+    {weight:"",reps:""},
+    {weight:"",reps:""}
+  ];
 }
 
-function getExercise(id) {
-  return exercises.find(e => e.id === id) || exercises[0];
+function imageHTML(ex) {
+  const url = ex.image || fallbackImage;
+  return `<img src="${safe(url)}" alt="${safe(ex.name)}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackImage}'">`;
 }
 
-function imageFallback(img) {
-  img.onerror = null;
-  img.src = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#202326"/><text x="100" y="95" fill="#ed1027" font-size="27" text-anchor="middle" font-family="Arial" font-weight="bold">SUB 60</text><text x="100" y="125" fill="#ddd" font-size="13" text-anchor="middle" font-family="Arial">IMPOSSIBLE</text></svg>'
-  );
-}
+function setupFilters() {
+  const muscle = $("muscleFilter");
+  const equipment = $("equipmentFilter");
+  const oldMuscle = muscle.value;
+  const oldEquipment = equipment.value;
 
-function imgHtml(ex) {
-  return `<img src="${safeText(ex.image)}" alt="${safeText(ex.name)}" onerror="imageFallback(this)">`;
+  const muscles = [...new Set(exercises.map(ex => ex.muscles).filter(Boolean))]
+    .sort((a,b) => a.localeCompare(b,"fr"));
+  const machines = [...new Set(exercises.map(ex => ex.machine).filter(Boolean))]
+    .sort((a,b) => a.localeCompare(b,"fr"));
+
+  muscle.innerHTML = '<option value="">Tous les muscles</option>' +
+    muscles.map(v => `<option value="${safe(v)}">${safe(v)}</option>`).join("");
+  equipment.innerHTML = '<option value="">Tous les équipements</option>' +
+    machines.map(v => `<option value="${safe(v)}">${safe(v)}</option>`).join("");
+
+  if (muscles.includes(oldMuscle)) muscle.value = oldMuscle;
+  if (machines.includes(oldEquipment)) equipment.value = oldEquipment;
 }
 
 function renderExerciseList() {
-  const q = $("search").value.trim().toLocaleLowerCase("fr");
-  const matches = exercises.filter(e =>
-    (e.name + " " + e.machine + " " + e.muscles + " " + e.search)
-      .toLocaleLowerCase("fr").includes(q)
-  );
+  const query = normalize($("search").value);
+  const muscle = $("muscleFilter").value;
+  const equipment = $("equipmentFilter").value;
 
-  $("exerciseList").innerHTML = matches.length
-    ? matches.map(ex => `
-      <button class="exercise ${ex.id === selectedId ? "selected" : ""}" data-id="${ex.id}" type="button">
-        ${imgHtml(ex)}
-        <span class="ex-copy">
-          <strong>${safeText(ex.name)}</strong>
-          <small>${safeText(ex.machine)} · ${safeText(ex.muscles)}</small>
-        </span>
-        <span class="chevron">›</span>
-      </button>`).join("")
-    : `<div class="empty">Aucun exercice trouvé. Essaie un autre mot.</div>`;
+  const filtered = exercises.filter(ex => {
+    const words = normalize([
+      ex.name,ex.englishName,ex.machine,ex.muscles,ex.equipment,ex.match
+    ].join(" "));
+    return (!query || words.includes(query)) &&
+      (!muscle || ex.muscles === muscle) &&
+      (!equipment || ex.machine === equipment);
+  });
 
-  $("exerciseList").querySelectorAll("[data-id]").forEach(btn => {
-    btn.addEventListener("click", () => selectExercise(btn.dataset.id));
+  $("exerciseList").innerHTML = filtered.length ? filtered.map(ex => `
+    <button type="button" class="exercise ${ex.id===selectedId?"selected":""}" data-id="${safe(ex.id)}">
+      ${imageHTML(ex)}
+      <span class="ex-copy">
+        <strong>${safe(ex.name)}</strong>
+        <small>${safe(ex.englishName)}<br>${safe(ex.machine)} · ${safe(ex.muscles)}</small>
+      </span>
+      <span aria-hidden="true">›</span>
+    </button>`).join("") :
+    '<div class="empty">Aucun exercice trouvé. Essaie un autre mot.</div>';
+
+  $("exerciseList").querySelectorAll("[data-id]").forEach(button => {
+    button.addEventListener("click", () => selectExercise(button.dataset.id));
   });
 }
 
 function selectExercise(id) {
-  selectedId = id;
-  const ex = getExercise(id);
-  currentSets = Array.isArray(saved[id]?.sets)
-    ? saved[id].sets.map(s => ({weight:String(s.weight ?? ""), reps:String(s.reps ?? "")}))
+  const ex = exercises.find(item => item.id === id);
+  if (!ex) return;
+
+  selectedId = ex.id;
+  try { localStorage.setItem(SELECTED_KEY, selectedId); } catch(e) {}
+
+  const previous = saved[selectedId]?.sets;
+  currentSets = Array.isArray(previous)
+    ? previous.map(s => ({weight:String(s.weight ?? ""),reps:String(s.reps ?? "")}))
     : defaultSets();
 
+  showTab("exercises");
   renderExerciseList();
   renderDetail();
-
-  if (activeTab === "saved") showTab("exercises");
-}
-
-function setRowHtml(s, i) {
-  return `
-    <div class="set-row">
-      <span class="set-label"><span style="display:inline-grid;place-items:center;background:var(--red);width:28px;height:28px;border-radius:50%">${i + 1}</span></span>
-      <div class="set-values">
-        <div class="field"><input inputmode="decimal" aria-label="Poids série ${i + 1} en kg" data-index="${i}" data-key="weight" placeholder="kg" value="${safeText(s.weight)}"></div>
-        <div class="field"><input inputmode="numeric" aria-label="Répétitions série ${i + 1}" data-index="${i}" data-key="reps" placeholder="reps" value="${safeText(s.reps)}"></div>
-      </div>
-      <button class="remove-set" type="button" data-remove="${i}" aria-label="Supprimer la série ${i + 1}">×</button>
-    </div>`;
 }
 
 function renderDetail() {
   const ex = getExercise(selectedId);
-  const sets = currentSets.length ? currentSets : defaultSets();
-  const latest = saved[ex.id]?.sets;
+  if (!ex) return;
 
+  const latest = saved[ex.id]?.sets;
   $("detailContent").innerHTML = `
     <div class="detail-top">
-      ${imgHtml(ex)}
+      ${imageHTML(ex)}
       <div>
-        <h2>${safeText(ex.name)}</h2>
-        <div class="subtitle">${safeText(ex.machine)} · ${safeText(ex.muscles)}</div>
-        <div class="tag-red">${safeText(ex.muscles.toUpperCase())}</div>
-        <div class="muscle-note">${safeText(ex.description)}</div>
+        <h2>${safe(ex.name)}</h2>
+        <div class="muted">${safe(ex.englishName || ex.name)}</div>
+        <div class="muted" style="margin-top:8px">${safe(ex.machine)} · ${safe(ex.muscles)}</div>
+        <div class="pill">♨ ${safe(String(ex.muscles).toUpperCase())}</div>
+        <p class="muted">${safe(ex.description || "Effectue le mouvement avec contrôle et choisis une charge adaptée.")}</p>
+        ${ex.custom ? '<div class="pill">✦ EXERCICE PERSONNALISÉ</div>' : ''}
       </div>
     </div>
 
-    <div class="sets-box">
-      <div class="sets-head">◉ Dernières charges enregistrées
-        <small>Modifiables à tout moment</small>
-      </div>
-      ${latest && latest.length ? latest.map((s, i) => `
+    <div class="box">
+      <div class="box-title">▣ DERNIÈRES CHARGES ENREGISTRÉES</div>
+      ${latest && latest.length ? latest.map((s,i) => `
         <div class="set-row">
-          <span class="set-label">Série ${i + 1}</span>
-          <div class="set-values">
-            <div class="field"><input aria-label="Poids enregistré" value="${safeText(s.weight)} kg" readonly></div>
-            <div class="field"><input aria-label="Répétitions enregistrées" value="${safeText(s.reps)} reps" readonly></div>
-          </div>
-          <span></span>
-        </div>`).join("") : `<div class="empty">Pas encore de charge enregistrée pour cet exercice.</div>`}
+          <span class="set-num">Série ${i+1}</span>
+          <div class="values">
+            <div class="field"><label>Poids</label><input value="${safe(s.weight)} kg" readonly></div>
+            <div class="field"><label>Répétitions</label><input value="${safe(s.reps)} reps" readonly></div>
+          </div><span></span>
+        </div>`).join("") :
+        '<div class="muted">Aucune charge enregistrée pour cet exercice.</div>'}
     </div>
 
-    <div class="sets-box">
-      <div class="sets-head">✎ Modifier mes charges</div>
+    <div class="box">
+      <div class="box-title">✎ MODIFIER MES CHARGES</div>
       <div class="set-row">
-        <span class="set-label">Série</span>
-        <div class="set-values">
-          <div class="field"><label>Poids (kg)</label></div>
-          <div class="field"><label>Répétitions</label></div>
-        </div><span></span>
+        <span class="set-num">Série</span>
+        <div class="values"><div class="field"><label>Poids (kg)</label></div><div class="field"><label>Répétitions</label></div></div>
+        <span></span>
       </div>
-      <div id="editableSets">${sets.map((s, i) => setRowHtml(s, i)).join("")}</div>
+      <div id="editableSets">
+        ${currentSets.map((s,i) => setRowHTML(s,i)).join("")}
+      </div>
       <button class="btn secondary" id="addSet" type="button">＋ Ajouter une série</button>
     </div>
 
-    <button class="btn primary save-btn" id="saveSets" type="button">▣ &nbsp; Enregistrer mes charges</button>
-    <div class="status"><i></i> Charges sauvegardées sur ce téléphone</div>`;
+    <button class="btn primary save" id="saveSets" type="button">▣ ENREGISTRER MES CHARGES</button>
+    <div class="status-text">Les modifications sont enregistrées sur ce téléphone.</div>
+  `;
 
-  $("editableSets").querySelectorAll("input").forEach(inp => {
-    inp.addEventListener("input", () => {
-      currentSets[Number(inp.dataset.index)][inp.dataset.key] = inp.value;
+  $("editableSets").querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", () => {
+      const index = Number(input.dataset.index);
+      const key = input.dataset.key;
+      if (currentSets[index]) currentSets[index][key] = input.value;
     });
   });
 
-  $("editableSets").querySelectorAll("[data-remove]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      currentSets.splice(Number(btn.dataset.remove), 1);
-      if (!currentSets.length) currentSets.push({weight:"", reps:""});
+  $("editableSets").querySelectorAll("[data-remove]").forEach(button => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.remove);
+      currentSets.splice(index,1);
+      if (!currentSets.length) currentSets.push({weight:"",reps:""});
       renderDetail();
     });
   });
 
   $("addSet").addEventListener("click", () => {
-    currentSets.push({weight:"", reps:""});
+    currentSets.push({weight:"",reps:""});
     renderDetail();
   });
 
   $("saveSets").addEventListener("click", saveCurrentSets);
 }
 
+function setRowHTML(set,index) {
+  return `<div class="set-row">
+    <span class="set-num">Série ${index+1}</span>
+    <div class="values">
+      <div class="field"><input inputmode="decimal" aria-label="Poids série ${index+1}" data-index="${index}" data-key="weight" placeholder="kg" value="${safe(set.weight)}"></div>
+      <div class="field"><input inputmode="numeric" aria-label="Répétitions série ${index+1}" data-index="${index}" data-key="reps" placeholder="reps" value="${safe(set.reps)}"></div>
+    </div>
+    <button class="remove" type="button" data-remove="${index}" aria-label="Supprimer la série">×</button>
+  </div>`;
+}
+
 function saveCurrentSets() {
-  const cleaned = currentSets
-    .map(s => ({weight:String(s.weight).trim(), reps:String(s.reps).trim()}))
-    .filter(s => s.weight !== "" || s.reps !== "");
+  const inputs = $("editableSets").querySelectorAll("input");
+  inputs.forEach(input => {
+    const i = Number(input.dataset.index);
+    const key = input.dataset.key;
+    if (currentSets[i]) currentSets[i][key] = input.value;
+  });
+
+  const cleaned = currentSets.map(set => ({
+    weight:String(set.weight ?? "").trim(),
+    reps:String(set.reps ?? "").trim()
+  })).filter(set => set.weight !== "" || set.reps !== "");
 
   if (!cleaned.length) {
-    showToast("Entre un poids ou un nombre de répétitions.");
+    showToast("Entre au moins un poids ou un nombre de répétitions.");
     return;
   }
 
@@ -461,15 +450,17 @@ function saveCurrentSets() {
 
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
-  } catch (e) {
-    showToast("Impossible de sauvegarder dans ce navigateur.");
+    localStorage.setItem(SELECTED_KEY, selectedId);
+  } catch (error) {
+    showToast("Sauvegarde impossible : vérifie les réglages du navigateur.");
     return;
   }
 
-  currentSets = cleaned.map(s => ({...s}));
+  currentSets = cleaned.map(set => ({...set}));
   renderDetail();
   renderSavedList();
-  showToast("Charges enregistrées !");
+  renderExerciseList();
+  showToast("Modifications enregistrées !");
 }
 
 function renderSavedList() {
@@ -478,52 +469,241 @@ function renderSavedList() {
   );
 
   $("savedList").innerHTML = entries.length ? entries.map(ex => {
-    const summary = saved[ex.id].sets.map((s, i) =>
-      `S${i + 1}: ${s.weight || "—"} kg × ${s.reps || "—"}`
+    const summary = saved[ex.id].sets.map((s,i) =>
+      `S${i+1} : ${s.weight || "—"} kg × ${s.reps || "—"} reps`
     ).join(" · ");
 
-    return `
-      <div class="saved-item">
-        ${imgHtml(ex)}
-        <div class="saved-copy">
-          <strong>${safeText(ex.name)}</strong>
-          <small>${safeText(summary)}</small>
-        </div>
-        <button class="btn" data-edit="${ex.id}" type="button">Modifier</button>
-      </div>`;
-  }).join("") : `
-    <div class="empty">Aucune charge enregistrée pour le moment. Choisis un exercice, saisis tes séries puis appuie sur « Enregistrer mes charges ».</div>`;
+    return `<div class="saved-item">
+      ${imageHTML(ex)}
+      <div class="saved-copy">
+        <strong>${safe(ex.name)}</strong>
+        <small>${safe(summary)}</small>
+      </div>
+      <button class="btn" type="button" data-edit="${safe(ex.id)}">Modifier</button>
+    </div>`;
+  }).join("") :
+  '<div class="empty">Aucune charge enregistrée pour le moment.</div>';
 
-  $("savedList").querySelectorAll("[data-edit]").forEach(btn => {
-    btn.addEventListener("click", () => selectExercise(btn.dataset.edit));
+  $("savedList").querySelectorAll("[data-edit]").forEach(button => {
+    button.addEventListener("click", () => selectExercise(button.dataset.edit));
   });
 }
 
 function showTab(tab) {
   activeTab = tab;
-  const isSaved = tab === "saved";
-  $("tabExercises").classList.toggle("active", !isSaved);
-  $("tabSaved").classList.toggle("active", isSaved);
-  $("catalogPanel").hidden = isSaved;
-  $("detailPanel").hidden = isSaved;
-  $("savedPanel").hidden = !isSaved;
-  if (isSaved) renderSavedList();
+  const savedTab = tab === "saved";
+
+  $("tabExercises").classList.toggle("active",!savedTab);
+  $("tabSaved").classList.toggle("active",savedTab);
+  $("catalogPanel").hidden = savedTab;
+  $("detailPanel").hidden = savedTab;
+  $("savedPanel").hidden = !savedTab;
+
+  if (savedTab) renderSavedList();
 }
 
 function showToast(message) {
-  const t = $("toast");
-  t.textContent = message;
-  t.style.display = "block";
+  const toast = $("toast");
+  toast.textContent = message;
+  toast.style.display = "block";
   clearTimeout(showToast.timer);
-  showToast.timer = setTimeout(() => t.style.display = "none", 2300);
+  showToast.timer = setTimeout(() => toast.style.display = "none",2500);
 }
 
-$("search").addEventListener("input", renderExerciseList);
-$("tabExercises").addEventListener("click", () => showTab("exercises"));
-$("tabSaved").addEventListener("click", () => showTab("saved"));
+function openAddExerciseForm() {
+  $("addExerciseForm").hidden = false;
+  $("customName").focus();
+}
 
-renderExerciseList();
+function closeAddExerciseForm() {
+  $("addExerciseForm").reset();
+  $("addExerciseForm").hidden = true;
+}
+
+function saveCustomExercises() {
+  try {
+    const custom = exercises.filter(ex => ex.custom);
+    localStorage.setItem(CUSTOM_KEY,JSON.stringify(custom));
+    return true;
+  } catch (error) {
+    showToast("Impossible de sauvegarder : espace de stockage insuffisant.");
+    return false;
+  }
+}
+
+function createCustomExercise(event) {
+  event.preventDefault();
+
+  const name = $("customName").value.trim();
+  if (!name) {
+    showToast("Donne un nom à ton exercice.");
+    return;
+  }
+
+  const englishName = $("customEnglish").value.trim() || name;
+  const muscles = $("customMuscle").value || "Autres";
+  const machine = $("customEquipment").value || "Autre";
+  const image = $("customImage").value.trim() || fallbackImage;
+
+  const id = "custom-" + Date.now().toString(36) + "-" +
+    Math.random().toString(36).slice(2,7);
+
+  const exercise = {
+    id,
+    name,
+    englishName,
+    muscles,
+    machine,
+    equipment:machine,
+    match:englishName,
+    description:"Exercice personnalisé. Note tes charges, tes répétitions et ajoute autant de séries que nécessaire.",
+    image,
+    custom:true
+  };
+
+  exercises.push(exercise);
+
+  if (!saveCustomExercises()) {
+    exercises = exercises.filter(ex => ex.id !== id);
+    return;
+  }
+
+  setupFilters();
+  $("search").value = "";
+  $("muscleFilter").value = "";
+  $("equipmentFilter").value = "";
+  closeAddExerciseForm();
+  selectExercise(id);
+  renderSavedList();
+  showToast("Exercice créé ! Tu peux maintenant saisir tes charges.");
+}
+
+$("showAddExercise").addEventListener("click",openAddExerciseForm);
+$("cancelAddExercise").addEventListener("click",closeAddExerciseForm);
+$("addExerciseForm").addEventListener("submit",createCustomExercise);
+
+function translateEquipment(value) {
+  const key = normalize(value);
+  const map = {
+    "machine":"Machine","cable":"Poulie","barbell":"Barre",
+    "dumbbell":"Haltères","body only":"Poids du corps",
+    "bodyweight":"Poids du corps","bands":"Élastiques",
+    "kettlebells":"Kettlebell","medicine ball":"Medecine ball",
+    "exercise ball":"Ballon de gym","foam roll":"Rouleau de massage",
+    "e z curl bar":"Barre EZ","other":"Autre","none":"Poids du corps"
+  };
+  return map[key] || value || "Autre";
+}
+
+function frenchName(english) {
+  const key = normalize(english);
+  const translations = {
+    "barbell bench press":"Développé couché à la barre",
+    "barbell squat":"Squat à la barre",
+    "barbell full squat":"Squat complet à la barre",
+    "barbell deadlift":"Soulevé de terre",
+    "dumbbell biceps curl":"Curl biceps aux haltères",
+    "dumbbell curl":"Curl aux haltères",
+    "incline dumbbell press":"Développé incliné aux haltères",
+    "lat pulldown":"Tirage vertical",
+    "seated cable row":"Tirage horizontal à la poulie",
+    "triceps pushdown":"Extension triceps à la poulie",
+    "side lateral raise":"Élévations latérales",
+    "cable crossover":"Écartés à la poulie",
+    "lying leg curl":"Leg curl allongé",
+    "standing calf raises":"Extensions mollets debout",
+    "plank":"Gainage planche",
+    "push up":"Pompes",
+    "pull up":"Tractions",
+    "crunch":"Crunch abdominal"
+  };
+  return translations[key] || english;
+}
+
+async function loadExerciseDatabase() {
+  const status = $("databaseStatus");
+  try {
+    const response = await fetch(DB_URL);
+    if (!response.ok) throw new Error("HTTP " + response.status);
+
+    const data = await response.json();
+    const records = Array.isArray(data) ? data :
+      (Array.isArray(data.exercises) ? data.exercises : []);
+
+    if (!records.length) throw new Error("Base vide");
+
+    let added = 0;
+    const known = new Set(exercises.map(ex => normalize(ex.englishName)));
+
+    for (const item of records) {
+      if (!item || !item.name) continue;
+      const englishName = String(item.name).trim();
+      const key = normalize(englishName);
+      if (!key || known.has(key)) continue;
+
+      const rawImage = Array.isArray(item.images)
+        ? item.images.find(path => typeof path === "string" && /\.(jpg|jpeg|png|webp)$/i.test(path))
+        : null;
+
+      const image = rawImage
+        ? IMG_BASE + rawImage.split("/").map(encodeURIComponent).join("/")
+        : fallbackImage;
+
+      const muscleNames = Array.isArray(item.primaryMuscles) && item.primaryMuscles.length
+        ? item.primaryMuscles.map(m => String(m).replace(/[_-]/g," "))
+        : ["Autres"];
+
+      const equipmentRaw = String(item.equipment || "other").replace(/[_-]/g," ");
+      const id = "db-" + String(item.id || key).toLowerCase().replace(/[^a-z0-9]+/g,"-");
+
+      if (exercises.some(ex => ex.id === id)) continue;
+
+      exercises.push({
+        id,
+        name:frenchName(englishName),
+        englishName,
+        muscles:muscleNames.join(", "),
+        machine:translateEquipment(equipmentRaw),
+        equipment:equipmentRaw,
+        description:"Exercice issu de la bibliothèque. Contrôle le mouvement et adapte la charge à ton niveau.",
+        image
+      });
+
+      known.add(key);
+      added++;
+    }
+
+    setupFilters();
+    renderExerciseList();
+    renderSavedList();
+
+    status.textContent = exercises.length + " exercices disponibles. " +
+      added + " exercices supplémentaires chargés. Recherche en français ou en anglais.";
+
+    if (selectedId && exercises.some(ex => ex.id === selectedId)) {
+      renderDetail();
+    }
+  } catch (error) {
+    console.warn("Base en ligne indisponible",error);
+    status.textContent = "Bibliothèque en ligne indisponible. Les exercices de base restent disponibles.";
+  }
+}
+
+$("search").addEventListener("input",renderExerciseList);
+$("muscleFilter").addEventListener("change",renderExerciseList);
+$("equipmentFilter").addEventListener("change",renderExerciseList);
+$("tabExercises").addEventListener("click",() => showTab("exercises"));
+$("tabSaved").addEventListener("click",() => showTab("saved"));
+
+loadSavedData();
+loadCustomExercises();
+setupFilters();
+
+if (!selectedId || !exercises.some(ex => ex.id === selectedId)) {
+  selectedId = exercises[0].id;
+}
 selectExercise(selectedId);
+loadExerciseDatabase();
 </script>
 </body>
 </html>
