@@ -10,46 +10,45 @@
 :root{--bg:#101010;--panel:#1b1b1b;--line:#303030;--text:#f5f5f5;--muted:#aaa;--green:#b8f36b;--red:#ff6868}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{padding:25px 18px 18px;background:#151515;border-bottom:1px solid var(--line)}
-.brand{font-size:12px;letter-spacing:4px;color:var(--green);font-weight:800}
-h1{font-size:30px;margin:7px 0}h2{font-size:21px;margin:0 0 15px}h3{font-size:16px;margin:0}
+header{padding:24px 18px 18px;background:#151515;border-bottom:1px solid var(--line)}
+.brand{font-size:11px;letter-spacing:3px;color:var(--green);font-weight:800}
+h1{font-size:29px;margin:8px 0}
+h2{font-size:21px;margin:0 0 15px}
+h3{font-size:16px;margin:0}
 p{color:var(--muted);line-height:1.5}
-main{max-width:720px;margin:auto;padding:17px 17px 100px}
-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:22px}
-nav button{padding:12px 4px;background:#222;border:1px solid var(--line);color:#ddd;border-radius:10px;font-size:13px}
-nav button.active{background:var(--green);color:#111;font-weight:800}
-.panel,.exercise,.history-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:15px;margin-bottom:13px}
+main{max-width:720px;margin:auto;padding:16px 15px 80px}
+nav{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+button{font:inherit;cursor:pointer}
+nav button{padding:13px 5px;background:#222;border:1px solid var(--line);color:#ddd;border-radius:10px}
+nav button.active{background:var(--green);color:#111;font-weight:800;border-color:var(--green)}
+.panel,.exercise,.saved-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:15px;margin-bottom:12px}
 label{display:block;font-size:12px;color:var(--muted);margin:12px 0 6px}
 input,select{width:100%;background:#101010;border:1px solid #393939;border-radius:9px;color:white;padding:12px;font-size:16px;min-width:0}
-button{cursor:pointer;font:inherit}
-.primary{background:var(--green);color:#111;border:0;border-radius:10px;padding:13px 15px;font-weight:800;width:100%;margin-top:12px}
-.primary:disabled{opacity:.4}
-.secondary{background:#292929;color:white;border:1px solid #414141;border-radius:9px;padding:10px;margin-top:10px}
+.primary{background:var(--green);color:#111;border:0;border-radius:10px;padding:13px;font-weight:800;width:100%;margin-top:12px}
+.secondary{background:#292929;color:white;border:1px solid #414141;border-radius:9px;padding:10px}
 .danger{color:var(--red);background:transparent;border:0;padding:8px}
 .small{font-size:12px;color:var(--muted)}
+.machine{font-size:12px;color:var(--green);margin-top:6px}
 .hidden{display:none!important}
 .suggestions{background:#222;border:1px solid #444;border-radius:10px;overflow:hidden;margin-top:5px}
 .suggestion{display:block;width:100%;text-align:left;padding:12px;background:transparent;color:white;border:0;border-bottom:1px solid #393939}
+.suggestion:last-child{border:0}
 .suggestion small{display:block;color:var(--muted);margin-top:4px}
 .exercise-top{display:flex;gap:12px;align-items:center}
 .exercise-top img,.photo-placeholder{width:105px;height:105px;object-fit:cover;border-radius:10px;background:#303030;flex-shrink:0}
 .photo-placeholder{display:grid;place-items:center;font-size:35px}
-.machine{font-size:12px;color:var(--green);margin-top:6px}
-.set-head,.set-row{display:grid;grid-template-columns:35px 1fr 1fr 32px;gap:7px;align-items:center}
-.set-head{font-size:11px;color:var(--muted);margin:16px 0 7px}
-.set-row{margin:7px 0}
+.set-head,.set-row{display:grid;grid-template-columns:35px 1fr 1fr 30px;gap:7px;align-items:center}
+.set-head{font-size:11px;color:var(--muted);margin:18px 0 7px}
+.set-row{margin:8px 0}
 .set-number{text-align:center;color:var(--green);font-weight:800}
-.set-row input{padding:10px 3px;text-align:center;font-size:15px}
-.remove-set{background:transparent;border:0;color:var(--muted);font-size:20px}
-.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat{background:#222;border-radius:11px;padding:13px;min-width:0}
-.stat strong{display:block;font-size:21px;margin-top:6px;overflow-wrap:anywhere}
-.stat span{font-size:12px;color:var(--muted)}
-.history-card summary{cursor:pointer;font-weight:700;line-height:1.6}
-.history-exercise{border-top:1px solid var(--line);padding:12px 0}
-.history-exercise p{margin:5px 0;font-size:13px}
-canvas{width:100%;height:230px;display:block;margin-top:12px}
+.set-row input{padding:11px 3px;text-align:center;font-size:15px}
+.remove-set{background:transparent;border:0;color:var(--muted);font-size:21px}
+.saved-card{display:flex;gap:12px;align-items:center;cursor:pointer}
+.saved-card img,.saved-card .photo-placeholder{width:76px;height:76px}
+.saved-info{flex:1;min-width:0}
+.saved-info p{font-size:12px;margin:6px 0 0}
 .empty{text-align:center;padding:25px 12px;color:var(--muted)}
+.status{font-size:12px;color:var(--green);margin-top:9px;min-height:16px}
 footer{text-align:center;color:#666;font-size:11px;padding:20px}
 </style>
 </head>
@@ -57,71 +56,38 @@ footer{text-align:center;color:#666;font-size:11px;padding:20px}
 <header>
  <div class="brand">TRAIN SMART. TRACK EVERYTHING.</div>
  <h1>IRON LEDGER <span style="color:var(--green)">↗</span></h1>
- <div class="small">Tes séances. Tes charges. Ta progression.</div>
+ <div class="small">Tes exercices. Tes charges. Ta progression.</div>
 </header>
 
 <main>
 <nav>
- <button class="active" data-tab="training">Entraînement</button>
- <button data-tab="history">Historique</button>
- <button data-tab="progress">Progression</button>
+ <button class="active" data-tab="catalogue">Exercices</button>
+ <button data-tab="saved">Mes charges</button>
 </nav>
 
-<section id="training">
+<section id="catalogue">
  <div class="panel">
-  <h2>Nouvelle séance</h2>
-  <label for="sessionName">Nom de la séance</label>
-  <input id="sessionName" placeholder="Ex. Pectoraux / Dos">
-
-  <label for="exerciseSearch">Rechercher un exercice</label>
-  <input id="exerciseSearch" autocomplete="off" placeholder="Ex. butterfly, développé...">
+  <h2>Choisir un exercice</h2>
+  <label for="search">Rechercher un exercice ou une machine</label>
+  <input id="search" autocomplete="off" placeholder="Ex. presse, butterfly, tirage...">
   <div id="suggestions" class="suggestions hidden"></div>
-  <div id="selectedInfo" class="small" style="margin-top:12px">Tape un nom et sélectionne un exercice.</div>
-  <button id="addExercise" class="primary" disabled>+ Ajouter cet exercice</button>
+  <p class="small">Tape quelques lettres, puis sélectionne l'exercice souhaité.</p>
  </div>
-
- <div id="workoutExercises"></div>
- <button id="saveWorkout" class="primary">Terminer et enregistrer la séance</button>
- <p class="small">Enregistre ta séance avant de quitter la page.</p>
+ <div id="editor"></div>
 </section>
 
-<section id="history" class="hidden">
- <h2>Historique des séances</h2>
- <div id="historyList"></div>
+<section id="saved" class="hidden">
+ <h2>Mes exercices enregistrés</h2>
+ <p class="small">Retrouve tes derniers poids et répétitions, puis modifie-les quand tu progresses.</p>
+ <div id="savedList"></div>
 </section>
 
-<section id="progress" class="hidden">
- <h2>Ta progression</h2>
- <div class="panel">
-  <label for="progressExercise">Choisir un exercice</label>
-  <select id="progressExercise"></select>
-
-  <label for="progressMetric">Indicateur du graphique</label>
-  <select id="progressMetric">
-   <option value="weight">Charge maximale (kg)</option>
-   <option value="reps">Répétitions maximales par série</option>
-   <option value="volume">Volume total (kg × reps)</option>
-  </select>
-
-  <div class="stat-grid" style="margin-top:14px">
-   <div class="stat"><span>Meilleure charge</span><strong id="bestWeight">—</strong></div>
-   <div class="stat"><span>Record de répétitions</span><strong id="bestReps">—</strong></div>
-   <div class="stat"><span>Meilleur volume par séance</span><strong id="bestVolume">—</strong></div>
-   <div class="stat"><span>Nombre de séances</span><strong id="sessionCount">0</strong></div>
-  </div>
-
-  <p id="chartTitle">Charge maximale par séance (kg)</p>
-  <canvas id="progressChart"></canvas>
-  <p id="progressEmpty" class="empty hidden">Enregistre plusieurs séances avec cet exercice pour comparer ta progression.</p>
-  <p class="small">Les répétitions affichées correspondent au plus grand nombre de répétitions réalisé sur une série de chaque séance.</p>
- </div>
-</section>
-
-<footer>IRON LEDGER · Sauvegarde locale sur cet appareil</footer>
+<footer>IRON LEDGER · Sauvegarde locale · Gratuit</footer>
 </main>
 
 <script>
-const KEY="ironLedgerV2";
+const KEY="ironLedgerCurrentV1";
+const OLD_KEY="ironLedgerV2";
 const $=id=>document.getElementById(id);
 
 const catalog=[
@@ -165,312 +131,192 @@ const catalog=[
  img:"https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/"+encodeURIComponent(x[3])+"/0.jpg"
 }));
 
-function loadData(){
- try{
-  const x=JSON.parse(localStorage.getItem(KEY));
-  if(x && Array.isArray(x.sessions))return x;
- }catch(e){}
- return {sessions:[]};
-}
-let data=loadData();
-let selected=null;
-let draft=[];
-
-function persist(){
- try{
-  localStorage.setItem(KEY,JSON.stringify(data));
-  return true;
- }catch(e){
-  alert("Sauvegarde impossible. Vérifie l'espace disponible dans le navigateur.");
-  return false;
- }
-}
 function safe(s){
  return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
-function fmtDate(date){
- return new Date(date).toLocaleString("fr-FR",{dateStyle:"medium",timeStyle:"short"});
+function load(){
+ try{
+  const raw=localStorage.getItem(KEY);
+  if(raw){
+   const obj=JSON.parse(raw);
+   if(obj && typeof obj==="object")return obj;
+  }
+ }catch(e){}
+ // Importer les dernières valeurs disponibles depuis l'ancienne version,
+ // si elle est présente sur ce même navigateur.
+ const migrated={};
+ try{
+  const old=JSON.parse(localStorage.getItem(OLD_KEY));
+  if(old && Array.isArray(old.sessions)){
+   old.sessions.forEach(session=>{
+    (session.exercises||[]).forEach(ex=>{
+     const c=catalog.find(e=>e.name.toLowerCase()===String(ex.name).toLowerCase());
+     if(!c)return;
+     migrated[c.id]={
+      ...c,sets:(ex.sets||[]).map(s=>({
+       weight:Number(s.weight)||0,reps:Number(s.reps)||0
+      }))
+     };
+    });
+   });
+  }
+ }catch(e){}
+ return migrated;
 }
-function volume(ex){
- return ex.sets.reduce((sum,s)=>sum+(Number(s.weight)||0)*(Number(s.reps)||0),0);
-}
-function getImage(ex){
- return ex.img || "";
-}
-function imageMarkup(ex){
- const url=getImage(ex);
- return `<div class="exercise-top-image">
-  <img src="${safe(url)}" alt="${safe(ex.name)}" loading="lazy"
-  onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-  <div class="photo-placeholder" style="display:none">🏋️</div>
- </div>`;
-}
-function showImage(ex){
- const url=getImage(ex);
- return `<img src="${safe(url)}" alt="${safe(ex.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="photo-placeholder" style="display:none">🏋️</div>`;
-}
+let saved=load();
+let currentId=null;
+let workingSets=[];
 
-document.querySelectorAll("nav button").forEach(btn=>{
- btn.addEventListener("click",()=>{
-  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b===btn));
-  ["training","history","progress"].forEach(id=>$(id).classList.toggle("hidden",id!==btn.dataset.tab));
-  if(btn.dataset.tab==="history")renderHistory();
-  if(btn.dataset.tab==="progress")renderProgress();
- });
-});
+function persist(){
+ try{
+  localStorage.setItem(KEY,JSON.stringify(saved));
+  return true;
+ }catch(e){
+  alert("La sauvegarde a échoué. Vérifie l'espace disponible sur le téléphone.");
+  return false;
+ }
+}
+function imgHTML(ex,cls=""){
+ return `<img class="${cls}" src="${safe(ex.img)}" alt="${safe(ex.name)}" loading="lazy"
+ onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='grid'">
+ <div class="photo-placeholder" style="display:none">🏋️</div>`;
+}
+function openExercise(id){
+ const ex=catalog.find(e=>e.id===id);
+ if(!ex)return;
+ currentId=id;
+ const stored=saved[id];
+ workingSets=stored && Array.isArray(stored.sets) && stored.sets.length
+  ?stored.sets.map(s=>({weight:Number(s.weight)||0,reps:Number(s.reps)||0}))
+  :[{weight:0,reps:10},{weight:0,reps:10},{weight:0,reps:10}];
 
-$("exerciseSearch").addEventListener("input",()=>{
- selected=null;
- $("addExercise").disabled=true;
- const q=$("exerciseSearch").value.trim().toLocaleLowerCase("fr");
- const matches=q?catalog.filter(e=>(e.name+" "+e.machine+" "+e.group).toLocaleLowerCase("fr").normalize("NFD").replace(/[\u0300-\u036f]/g,"").includes(q.normalize("NFD").replace(/[\u0300-\u036f]/g,""))).slice(0,8):[];
- $("suggestions").innerHTML=matches.map(e=>`<button class="suggestion" data-id="${e.id}">${safe(e.name)}<small>${safe(e.machine)} · ${safe(e.group)}</small></button>`).join("");
- $("suggestions").classList.toggle("hidden",!matches.length);
- $("selectedInfo").textContent=matches.length?"Sélectionne l'exercice souhaité.":(q?"Aucun exercice trouvé dans le catalogue.":"Tape un nom et sélectionne un exercice.");
-});
-
-$("suggestions").addEventListener("click",ev=>{
- const btn=ev.target.closest("[data-id]");
- if(!btn)return;
- selected=catalog.find(e=>e.id===btn.dataset.id);
- $("exerciseSearch").value=selected.name;
+ $("search").value=ex.name;
  $("suggestions").classList.add("hidden");
- $("selectedInfo").innerHTML="";
- const preview=document.createElement("div");
- preview.className="exercise-top";
- preview.innerHTML=showImage(selected)+`<div style="flex:1"><h3>${safe(selected.name)}</h3><div class="machine">${safe(selected.machine)}</div><div class="small" style="margin-top:6px">${safe(selected.group)}</div></div>`;
- $("selectedInfo").appendChild(preview);
- $("addExercise").disabled=false;
-});
-
-$("addExercise").addEventListener("click",()=>{
- if(!selected)return;
- draft.push({
-  id:Date.now().toString(36)+Math.random().toString(36).slice(2),
-  name:selected.name,machine:selected.machine,group:selected.group,img:selected.img,
-  sets:[{weight:0,reps:10},{weight:0,reps:10},{weight:0,reps:10}]
- });
- renderDraft();
- $("exerciseSearch").value="";
- $("selectedInfo").textContent="Tape un nom et sélectionne un exercice.";
- $("addExercise").disabled=true;
- selected=null;
-});
-
-function renderDraft(){
- $("workoutExercises").innerHTML=draft.map((ex,ei)=>`
- <div class="exercise">
+ renderEditor();
+}
+function renderEditor(){
+ const ex=catalog.find(e=>e.id===currentId);
+ if(!ex){$("editor").innerHTML="";return;}
+ const isSaved=!!saved[currentId];
+ $("editor").innerHTML=`
+ <div class="panel">
   <div class="exercise-top">
-   ${showImage(ex)}
-   <div style="flex:1"><h3>${safe(ex.name)}</h3><div class="machine">${safe(ex.machine)}</div><div class="small">${safe(ex.group)}</div></div>
-   <button class="danger" data-remove-ex="${ei}" aria-label="Supprimer l'exercice">✕</button>
+   ${imgHTML(ex)}
+   <div style="flex:1">
+    <h3>${safe(ex.name)}</h3>
+    <div class="machine">${safe(ex.machine)}</div>
+    <div class="small" style="margin-top:6px">${safe(ex.group)}</div>
+   </div>
   </div>
   <div class="set-head"><span>Série</span><span>Poids (kg)</span><span>Répétitions</span><span></span></div>
-  ${ex.sets.map((s,si)=>`
-   <div class="set-row">
-    <div class="set-number">${si+1}</div>
-    <input type="number" min="0" step="0.5" value="${s.weight}" aria-label="Poids série ${si+1}" data-e="${ei}" data-s="${si}" data-field="weight">
-    <input type="number" min="0" step="1" value="${s.reps}" aria-label="Répétitions série ${si+1}" data-e="${ei}" data-s="${si}" data-field="reps">
-    <button class="remove-set" data-remove-set="${ei},${si}" aria-label="Supprimer série">−</button>
-   </div>`).join("")}
-  <button class="secondary" data-add-set="${ei}">+ Ajouter une série</button>
+  <div id="sets"></div>
+  <button class="secondary" id="addSet">+ Ajouter une série</button>
+  <button class="primary" id="saveExercise">Enregistrer mes charges</button>
+  <div class="status" id="saveStatus">${isSaved?"Dernières charges enregistrées sur cet appareil.":"Pas encore de charges enregistrées."}</div>
+ </div>`;
+ renderSets();
+ $("addSet").onclick=()=>{
+  workingSets.push({weight:0,reps:10});
+  renderSets();
+ };
+ $("saveExercise").onclick=saveCurrent;
+}
+function renderSets(){
+ const container=$("sets");
+ if(!container)return;
+ container.innerHTML=workingSets.map((s,i)=>`
+ <div class="set-row">
+  <div class="set-number">${i+1}</div>
+  <input type="number" min="0" step="0.5" inputmode="decimal"
+   value="${s.weight}" data-index="${i}" data-field="weight" aria-label="Poids série ${i+1} en kg">
+  <input type="number" min="0" step="1" inputmode="numeric"
+   value="${s.reps}" data-index="${i}" data-field="reps" aria-label="Répétitions série ${i+1}">
+  <button class="remove-set" data-remove="${i}" aria-label="Supprimer la série">−</button>
  </div>`).join("");
-}
-$("workoutExercises").addEventListener("input",ev=>{
- const el=ev.target;
- if(el.dataset.e===undefined)return;
- const s=draft[Number(el.dataset.e)]?.sets[Number(el.dataset.s)];
- if(!s)return;
- s[el.dataset.field]=Math.max(0,Number(el.value)||0);
-});
-$("workoutExercises").addEventListener("click",ev=>{
- const t=ev.target.closest("button");
- if(!t)return;
- if(t.dataset.addSet!==undefined){
-  draft[Number(t.dataset.addSet)].sets.push({weight:0,reps:10});
-  renderDraft();
- }
- if(t.dataset.removeEx!==undefined){
-  draft.splice(Number(t.dataset.removeEx),1);
-  renderDraft();
- }
- if(t.dataset.removeSet!==undefined){
-  const [ei,si]=t.dataset.removeSet.split(",").map(Number);
-  if(draft[ei].sets.length>1)draft[ei].sets.splice(si,1);
-  renderDraft();
- }
-});
 
-$("saveWorkout").addEventListener("click",()=>{
- if(!draft.length){alert("Ajoute au moins un exercice avant d'enregistrer.");return;}
- const name=$("sessionName").value.trim()||"Séance de musculation";
- const session={
-  id:Date.now().toString(),
-  name,date:new Date().toISOString(),
-  exercises:draft.map(e=>({...e,sets:e.sets.map(s=>({...s}))}))
- };
- data.sessions.unshift(session);
- if(!persist()){data.sessions.shift();return;}
- draft=[];
- $("sessionName").value="";
- renderDraft();
- renderHistory();
- renderProgress();
- alert("Séance enregistrée ! 💪");
-});
-
-function renderHistory(){
- if(!data.sessions.length){
-  $("historyList").innerHTML='<div class="empty">Aucune séance enregistrée pour le moment.</div>';
-  return;
- }
- $("historyList").innerHTML=data.sessions.map(session=>`
-  <div class="history-card">
-   <details>
-    <summary>${safe(session.name)}<div class="small">${fmtDate(session.date)} · ${session.exercises.length} exercice(s)</div></summary>
-    ${session.exercises.map(ex=>`
-     <div class="history-exercise">
-      <strong>${safe(ex.name)}</strong>
-      <div class="machine">${safe(ex.machine||"Machine non précisée")}</div>
-      <p>${ex.sets.map((s,i)=>"S"+(i+1)+": "+s.weight+" kg × "+s.reps+" reps").join(" · ")}</p>
-      <p>Volume : ${Math.round(volume(ex)).toLocaleString("fr-FR")} kg</p>
-     </div>`).join("")}
-    <button class="danger" data-delete-session="${safe(session.id)}">Supprimer cette séance</button>
-   </details>
-  </div>`).join("");
-}
-$("historyList").addEventListener("click",ev=>{
- const b=ev.target.closest("[data-delete-session]");
- if(!b)return;
- if(!confirm("Supprimer définitivement cette séance ?"))return;
- const old=data.sessions;
- data.sessions=old.filter(s=>s.id!==b.dataset.deleteSession);
- if(!persist()){data.sessions=old;return;}
- renderHistory();
- renderProgress();
-});
-
-function allExerciseNames(){
- return [...new Set(data.sessions.flatMap(s=>s.exercises.map(e=>e.name)))].sort((a,b)=>a.localeCompare(b,"fr"));
-}
-$("progressExercise").addEventListener("change",renderProgress);
-$("progressMetric").addEventListener("change",renderProgress);
-
-function renderProgress(){
- const names=allExerciseNames();
- const select=$("progressExercise");
- const previous=select.value;
- select.innerHTML=names.map(n=>`<option value="${safe(n)}">${safe(n)}</option>`).join("");
- if(names.includes(previous))select.value=previous;
-
- const name=select.value;
- const points=data.sessions.slice().reverse().map(session=>{
-  const found=session.exercises.filter(e=>e.name===name);
-  if(!found.length)return null;
-  const sets=found.flatMap(e=>e.sets);
-  return {
-   date:new Date(session.date),
-   weight:Math.max(...sets.map(s=>Number(s.weight)||0)),
-   reps:Math.max(...sets.map(s=>Number(s.reps)||0)),
-   volume:found.reduce((sum,e)=>sum+volume(e),0)
+ container.querySelectorAll("input").forEach(input=>{
+  input.addEventListener("input",()=>{
+   const i=Number(input.dataset.index);
+   const field=input.dataset.field;
+   workingSets[i][field]=Math.max(0,Number(input.value)||0);
+   const status=$("saveStatus");
+   if(status)status.textContent="Modifications non enregistrées.";
+  });
+ });
+ container.querySelectorAll("[data-remove]").forEach(button=>{
+  button.onclick=()=>{
+   if(workingSets.length<=1){alert("Garde au moins une série.");return;}
+   workingSets.splice(Number(button.dataset.remove),1);
+   renderSets();
   };
- }).filter(Boolean);
-
- $("bestWeight").textContent=points.length?Math.max(...points.map(p=>p.weight))+" kg":"—";
- $("bestReps").textContent=points.length?Math.max(...points.map(p=>p.reps))+" reps":"—";
- $("bestVolume").textContent=points.length?Math.round(Math.max(...points.map(p=>p.volume)).toLocaleString("fr-FR"))+" kg":"—";
- $("sessionCount").textContent=points.length;
-
- const metric=$("progressMetric").value;
- const labels={
-  weight:"Charge maximale par séance (kg)",
-  reps:"Répétitions maximales par série",
-  volume:"Volume total par séance (kg × reps)"
- };
- $("chartTitle").textContent=labels[metric];
- $("progressEmpty").classList.toggle("hidden",points.length>1);
- drawChart(points,metric);
-}
-
-function drawChart(points,metric){
- const canvas=$("progressChart");
- const ctx=canvas.getContext("2d");
- const width=canvas.clientWidth||300;
- const height=230;
- const dpr=window.devicePixelRatio||1;
-
- canvas.width=width*dpr;
- canvas.height=height*dpr;
- ctx.setTransform(dpr,0,0,dpr,0,0);
- ctx.clearRect(0,0,width,height);
-
- if(!points.length){
-  ctx.fillStyle="#999";
-  ctx.font="13px sans-serif";
-  ctx.fillText("Enregistre une séance pour commencer",8,30);
-  return;
- }
-
- const values=points.map(p=>p[metric]);
- const max=Math.max(...values,1)*1.15;
- const pad={l:45,r:12,t:20,b:38};
- const w=width-pad.l-pad.r;
- const h=height-pad.t-pad.b;
-
- ctx.font="10px sans-serif";
- ctx.strokeStyle="#393939";
- ctx.fillStyle="#aaa";
- ctx.lineWidth=1;
-
- for(let i=0;i<5;i++){
-  const y=pad.t+h*i/4;
-  ctx.beginPath();
-  ctx.moveTo(pad.l,y);
-  ctx.lineTo(width-pad.r,y);
-  ctx.stroke();
-  const value=max*(1-i/4);
-  const label=metric==="weight"?value.toFixed(1):Math.round(value).toLocaleString("fr-FR");
-  ctx.fillText(label,2,y+4);
- }
-
- const coords=values.map((v,i)=>({
-  x:pad.l+(values.length===1?w/2:i*w/(values.length-1)),
-  y:pad.t+h-(v/max)*h
- }));
-
- if(coords.length>1){
-  ctx.strokeStyle="#b8f36b";
-  ctx.lineWidth=2.5;
-  ctx.beginPath();
-  coords.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));
-  ctx.stroke();
- }
-
- coords.forEach((p,i)=>{
-  ctx.fillStyle="#b8f36b";
-  ctx.beginPath();
-  ctx.arc(p.x,p.y,4,0,Math.PI*2);
-  ctx.fill();
-
-  ctx.fillStyle="#eee";
-  const label=metric==="weight"?values[i]+" kg":metric==="reps"?values[i]+" reps":Math.round(values[i]).toLocaleString("fr-FR");
-  ctx.fillText(label,Math.max(0,Math.min(p.x-10,width-65)),Math.max(12,p.y-10));
-
-  if(i===0||i===coords.length-1||coords.length<=5){
-   ctx.fillStyle="#aaa";
-   const date=points[i].date.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit"});
-   ctx.fillText(date,Math.max(0,Math.min(p.x-14,width-38)),height-10);
-  }
  });
 }
-
-window.addEventListener("resize",()=>{
- if(!$("progress").classList.contains("hidden"))renderProgress();
+function saveCurrent(){
+ if(!currentId)return;
+ const ex=catalog.find(e=>e.id===currentId);
+ const previous=saved[currentId];
+ saved[currentId]={...ex,sets:workingSets.map(s=>({...s}))};
+ if(!persist()){
+  if(previous)saved[currentId]=previous;
+  else delete saved[currentId];
+  return;
+ }
+ $("saveStatus").textContent="✓ Charges enregistrées. Tu les retrouveras la prochaine fois.";
+ renderSaved();
+}
+$("search").addEventListener("input",()=>{
+ const q=$("search").value.trim().toLocaleLowerCase("fr").normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+ const matches=q?catalog.filter(e=>(e.name+" "+e.machine+" "+e.group).toLocaleLowerCase("fr").normalize("NFD").replace(/[\u0300-\u036f]/g,"").includes(q)).slice(0,10):[];
+ $("suggestions").innerHTML=matches.map(e=>`
+ <button class="suggestion" data-id="${e.id}">
+  ${safe(e.name)}
+  <small>${safe(e.machine)} · ${safe(e.group)}</small>
+ </button>`).join("");
+ $("suggestions").classList.toggle("hidden",matches.length===0);
 });
-
-renderDraft();
-renderHistory();
-renderProgress();
+$("suggestions").addEventListener("click",ev=>{
+ const button=ev.target.closest("[data-id]");
+ if(button)openExercise(button.dataset.id);
+});
+document.querySelectorAll("nav button").forEach(button=>{
+ button.addEventListener("click",()=>{
+  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b===button));
+  $("catalogue").classList.toggle("hidden",button.dataset.tab!=="catalogue");
+  $("saved").classList.toggle("hidden",button.dataset.tab!=="saved");
+  if(button.dataset.tab==="saved")renderSaved();
+ });
+});
+function renderSaved(){
+ const entries=Object.values(saved);
+ if(!entries.length){
+  $("savedList").innerHTML='<div class="empty">Aucune charge enregistrée. Choisis un exercice et saisis tes séries.</div>';
+  return;
+ }
+ $("savedList").innerHTML=entries.map(ex=>{
+  const total=ex.sets.length;
+  const summary=ex.sets.map((s,i)=>`S${i+1} : ${s.weight} kg × ${s.reps}`).join(" · ");
+  return `<div class="saved-card" role="button" tabindex="0" data-open="${ex.id}">
+   ${imgHTML(ex)}
+   <div class="saved-info">
+    <h3>${safe(ex.name)}</h3>
+    <div class="machine">${safe(ex.machine)}</div>
+    <p>${total} série(s)</p>
+    <p>${safe(summary)}</p>
+   </div>
+   <span style="color:var(--green)">›</span>
+  </div>`;
+ }).join("");
+ $("savedList").querySelectorAll("[data-open]").forEach(card=>{
+  const open=()=>{
+   openExercise(card.dataset.open);
+   document.querySelector('[data-tab="catalogue"]').click();
+   window.scrollTo({top:0,behavior:"smooth"});
+  };
+  card.addEventListener("click",open);
+  card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open();}});
+ });
+}
+renderSaved();
 </script>
 </body>
 </html>
